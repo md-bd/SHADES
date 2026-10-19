@@ -1,3 +1,11 @@
+# project folders
+.DS_Store
+images/
+results/
+data/
+models/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

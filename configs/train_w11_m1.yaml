@@ -1,0 +1,70 @@
+###
+### Author: Mohammad Khan
+### mkhan2024@fau.edu
+###
+##################################### model #####################################
+
+seed: 42
+
+# M1 -> Net_8
+cnn_model: 'Net_3'
+
+# optimizer parameters
+optimizer: 
+  name: 'adam'
+  parameters: 
+    lr: 0.001
+
+# model output path
+output_save_path: models/m1_w11_CEU1e8Trunc
+
+
+epochs: 5
+batch_size: 20
+resume_training: False
+load_pretrained_model: ''
+
+##################################### dataset #####################################
+dataset_name: 'CEU1e8Trunc'
+
+# M1 model only uses one window images.
+# Choose window 11, 21, and 51. Choose their correct path as well.
+# image 1 -> freq/ folder
+# image 2 -> freq_dist/ folder
+# image 3 -> w_haplo_d_b/ folder
+w1_window_size: 11
+task_1_data_path: 'data/generated_data/w11_CEU_1e8_trunc/freq/'
+task_2_data_path: 'data/generated_data/w11_CEU_1e8_trunc/freq_dist/'
+task_3_data_path: 'data/generated_data/w11_CEU_1e8_trunc/w_haplo_d_b/'
+
+
+# 4 classes has 6000 samples each
+# total samples: 6000 x 4 = 24,000
+# test gets 4,000 samples because of train_test_split: 4000. (Always splits into train test data.)
+# validation gets samples if validation: True. It will get 4,000 samples (if validation: True) as train_val_split: 4000.
+
+# train test split
+train_test_split: 4000
+
+# train val split
+train_val_split: 4000
+
+normalization: 'dataset_wise_standardization'
+
+##################################### training config #####################################
+
+# if you don't want to test on test data you can choose False. 
+# this does not make the data split skip test splitting. 
+# this just does not test on test data if False.
+test: True
+
+# if you dont want validation data, you should choose False, else True.
+# validation: True
+validation: False
+
+
+# dataloader worker numbers. If cpu has more cores, you can increase them.
+train_dl_num_workers: 7
+val_dl_num_workers: 2
+test_dl_num_workers: 6
+

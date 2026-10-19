@@ -1,0 +1,73 @@
+###
+### Author: Mohammad Khan
+### mkhan2024@fau.edu
+###
+##################################### model #####################################
+
+seed: 42
+
+# M2 -> Net_21
+cnn_model: 'Net_21'
+
+optimizer: 
+  name: 'adam'
+  parameters: 
+    lr: 0.001
+
+output_save_path: 'models/m2_w11_CEU1e8Trunc/'
+
+epochs: 8
+batch_size: 20
+resume_training: False
+load_pretrained_model: ''
+
+##################################### dataset #####################################
+dataset_name: 'CEU1e8Trunc'
+
+# M2 input size is 299. 
+resize_shape: 299
+resize_interpolation: 'shape_dependent'
+
+
+# M2 model only uses one window images.
+# Choose window 11, 21, and 51. Choose their correct path as well.
+# image 1 -> freq/ folder
+# image 2 -> freq_dist/ folder
+# image 3 -> w_haplo_d_b/ folder
+w1_window_size: 11
+task_1_data_path: 'data/generated_data/w11_CEU_1e8_trunc/freq/'
+task_2_data_path: 'data/generated_data/w11_CEU_1e8_trunc/freq_dist/'
+task_3_data_path: 'data/generated_data/w11_CEU_1e8_trunc/w_haplo_d_b/'
+
+
+# 4 classes has 6000 samples each
+# total samples: 6000 x 4 = 24,000
+# test gets 4,000 samples because of train_test_split: 4000. (Always splits into train test data.)
+# validation gets samples if validation: True. It will get 4,000 samples (if validation: True) as train_val_split: 4000.
+train_test_split: 4000
+train_val_split: 4000
+
+
+# image_wise_standardization -> each image is standardized by its mean and std
+# image_wise_normalizaton -> each image is normalized by its min and max
+# normalization: ''
+normalization: 'dataset_wise_standardization'
+# normalization: 'image_wise_normalizaton'
+
+
+##################################### training config #####################################
+
+# if you don't want to test on test data you can choose False. 
+# this does not make the data split skip test splitting. 
+# this just does not test on test data if False. 
+test: True
+
+# if you dont want validation data, you should choose False, else True.
+# validation: True
+validation: False
+
+
+train_dl_num_workers: 7
+val_dl_num_workers: 2
+test_dl_num_workers: 7
+

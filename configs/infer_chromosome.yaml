@@ -1,0 +1,77 @@
+###
+### Author: Mohammad Khan
+### mkhan2024@fau.edu
+###
+##################################### model #####################################
+
+seed: 42
+
+# SHADES[M1] -> Net_10
+# SHADES[M2] -> Net_23
+cnn_model: 'Net_23'
+
+# inference output save path
+output_save_path: results/empirical_results/shades_m2
+report_folder: 'infer_report_chr2'
+
+batch_size: 20
+
+optimizer: 
+  name: 'adam'
+  parameters: 
+    lr: 0.001
+
+# trained model path
+load_pretrained_model: 'models/shades_m2_CEU1e8Trunc/model/model_epoch_15.pth'
+
+##################################### dataset #####################################
+dataset_name: 'CEU1e8Trunc'
+# datasets: ['AI', 'Bal', 'Neut', 'Sweep']
+
+# CEU6000 dataset
+resize_shape: 299
+
+# chromosomes to infer
+# Expected folder format
+# task_1_data_path
+# |----- chromosome_1
+# |----- chromosome_2
+# |----- chromosome_3
+# |----- ......
+
+# task_2_data_path
+# |----- chromosome_1
+# |----- chromosome_2
+# |----- chromosome_3
+# |----- ......
+
+# .......
+chromosomes: ['chromosome_2', 'chromosome_6', 'chromosome_9', 'chromosome_15']
+
+w1_window_size: 21
+task_1_data_path: 'data/generated_data/w21_chromosome/freq/'
+task_2_data_path: 'data/generated_data/w21_chromosome/freq_dist/'
+task_3_data_path: 'data/generated_data/w21_chromosome/w_haplo_d_b/'
+
+w2_window_size: 11
+w2_task_1_data_path: 'data/generated_data/w11_chromosome/freq/'
+w2_task_2_data_path: 'data/generated_data/w11_chromosome/freq_dist/'
+w2_task_3_data_path: 'data/generated_data/w11_chromosome/w_haplo_d_b/'
+
+w3_window_size: 51
+w3_task_1_data_path: 'data/generated_data/w51_chromosome/freq/'
+w3_task_2_data_path: 'data/generated_data/w51_chromosome/freq_dist/'
+w3_task_3_data_path: 'data/generated_data/w51_chromosome/w_haplo_d_b/'
+
+
+# image_wise_standardization -> each image is standardized by its mean and std
+# image_wise_normalizaton -> each image is normalized by its min and max
+normalization: 'dataset_wise_standardization'
+# normalization: 'image_wise_standardization'
+# normalization: 'image_wise_normalizaton'
+
+
+# dataloader worker numbers. If cpu has more cores, you can increase them.
+infer_dl_num_workers: 10
+
+

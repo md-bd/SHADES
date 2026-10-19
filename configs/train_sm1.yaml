@@ -1,0 +1,90 @@
+###
+### Author: Mohammad Khan
+### mkhan2024@fau.edu
+###
+##################################### model #####################################
+
+seed: 42
+
+# SHADES[M1] -> Net_10
+cnn_model: 'Net_12'
+
+optimizer: 
+  name: 'adam'
+  parameters: 
+    lr: 0.001
+
+# model output path
+output_save_path: models/shades_m1_CEU1e8Trunc
+
+
+epochs: 10
+batch_size: 20
+# if you have a SHADES[M1] model trained and want to resume training
+# then use resume_training: True and set the trained SHADES[M1] model path 
+# in load_pretrained_model.
+resume_training: False
+load_pretrained_model: ''
+
+
+# SHADES[M1] model uses three window images.
+# w1_pretrained_model -> windwow 21 trained model path
+# w2_pretrained_model -> windwow 11 trained model path
+# w3_pretrained_model -> windwow 51 trained model path
+w1_pretrained_model: 'models/m1_w21_CEU1e8Trunc/model/model.pth'
+w2_pretrained_model: 'models/m1_w11_CEU1e8Trunc/model/model.pth'
+w3_pretrained_model: 'models/m1_w51_CEU1e8Trunc/model/model.pth'
+
+
+##################################### dataset #####################################
+dataset_name: 'CEU1e8Trunc'
+
+# SHADES[M1] model uses three window images.
+# image 1 -> freq/ folder
+# image 2 -> freq_dist/ folder
+# image 3 -> w_haplo_d_b/ folder
+
+# CEU1e8Trunc dataset
+w1_window_size: 21
+task_1_data_path: 'data/generated_data/w21_CEU_1e8_trunc/freq/'
+task_2_data_path: 'data/generated_data/w21_CEU_1e8_trunc/freq_dist/'
+task_3_data_path: 'data/generated_data/w21_CEU_1e8_trunc/w_haplo_d_b/'
+
+
+w2_window_size: 11
+w2_task_1_data_path: 'data/generated_data/w11_CEU_1e8_trunc/freq/'
+w2_task_2_data_path: 'data/generated_data/w11_CEU_1e8_trunc/freq_dist/'
+w2_task_3_data_path: 'data/generated_data/w11_CEU_1e8_trunc/w_haplo_d_b/'
+
+
+w3_window_size: 51
+w3_task_1_data_path: 'data/generated_data/w51_CEU_1e8_trunc/freq/'
+w3_task_2_data_path: 'data/generated_data/w51_CEU_1e8_trunc/freq_dist/'
+w3_task_3_data_path: 'data/generated_data/w51_CEU_1e8_trunc/w_haplo_d_b/'
+
+
+# 4 classes has 6000 samples each
+# total samples: 6000 x 4 = 24,000
+# test gets 4,000 samples because of train_test_split: 4000. (Always splits into train test data.)
+# validation gets samples if validation: True. It will get 4,000 samples (if validation: True) as train_val_split: 4000.
+train_test_split: 4000
+train_val_split: 4000
+
+normalization: 'dataset_wise_standardization'
+
+##################################### training config #####################################
+
+# if you don't want to test on test data you can choose False. 
+# this does not make the data split skip test splitting. 
+# this just does not test on test data if False. 
+test: True
+
+# if you dont want validation data, you should choose False, else True.
+# validation: True
+validation: False
+
+# dataloader worker numbers. If cpu has more cores, you can increase them.
+train_dl_num_workers: 7
+val_dl_num_workers: 2
+test_dl_num_workers: 7
+

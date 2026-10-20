@@ -16,7 +16,7 @@ optimizer:
 
 output_save_path: 'models/m2_w11_CEU1e8Trunc/'
 
-epochs: 8
+epochs: 5
 batch_size: 20
 resume_training: False
 load_pretrained_model: ''
@@ -44,9 +44,11 @@ task_3_data_path: 'data/generated_data/w11_CEU_1e8_trunc/w_haplo_d_b/'
 # total samples: 6000 x 4 = 24,000
 # test gets 4,000 samples because of train_test_split: 4000. (Always splits into train test data.)
 # validation gets samples if validation: True. It will get 4,000 samples (if validation: True) as train_val_split: 4000.
-train_test_split: 4000
-train_val_split: 4000
+train_test_split: 4
+train_val_split: 4
 
+# train_test_split: 4000
+# train_val_split: 4000
 
 # image_wise_standardization -> each image is standardized by its mean and std
 # image_wise_normalizaton -> each image is normalized by its min and max

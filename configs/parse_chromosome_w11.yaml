@@ -22,7 +22,7 @@ position_stride: 21
 # |-------- chromosome_3.vcf
 # |......
 data_root_path: 'data/chromosomes/'
-chromosomes: ['chromosome_1', 'chromosome_2', 'chromosome_22']
+chromosomes: ['chromosome_22']
 
 # save path for statistics for window_size
 output_save_path: 'data/generated_data/w11_chromosome/'

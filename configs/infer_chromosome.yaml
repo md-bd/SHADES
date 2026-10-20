@@ -12,7 +12,7 @@ cnn_model: 'Net_23'
 
 # inference output save path
 output_save_path: results/empirical_results/shades_m2
-report_folder: 'infer_report_chr2'
+report_folder: 'infer_report_chr22'
 
 batch_size: 20
 
@@ -22,7 +22,7 @@ optimizer:
     lr: 0.001
 
 # trained model path
-load_pretrained_model: 'models/shades_m2_CEU1e8Trunc/model/model_epoch_15.pth'
+load_pretrained_model: 'models/shades_m2_CEU1e8Trunc/model/model.pth'
 
 ##################################### dataset #####################################
 dataset_name: 'CEU1e8Trunc'
@@ -46,7 +46,7 @@ resize_shape: 299
 # |----- ......
 
 # .......
-chromosomes: ['chromosome_2', 'chromosome_6', 'chromosome_9', 'chromosome_15']
+chromosomes: ['chromosome_22']
 
 w1_window_size: 21
 task_1_data_path: 'data/generated_data/w21_chromosome/freq/'

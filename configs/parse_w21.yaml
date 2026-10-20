@@ -1,0 +1,30 @@
+###
+### Author: Mohammad Khan
+### mkhan2024@fau.edu
+###
+
+# window 11 config
+
+# set the window size 11, 21, or 51
+window_size: 21
+# choose stride
+stride: 10
+
+# point to where the ms files are.
+# expecting:
+# data_root_path
+# |---- AI 
+# |---- BalSel 
+# |---- Neut 
+# |---- Sweeps 
+data_root_path: 'data/ceu_samples/'
+datasets: ['AI', 'Sweeps', 'BalSel', 'Neut']
+
+
+# save path for statistics for window_size
+output_save_path: 'data/generated_data/w21_CEU_1e8_trunc/'
+
+
+# image 3 param
+# max unique haplotypes
+max_u_haplos: 10

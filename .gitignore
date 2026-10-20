@@ -2,7 +2,8 @@
 .DS_Store
 images/
 results/
-data/
+data/chromosomes/
+data/generated_data/
 models/
 
 

@@ -106,7 +106,7 @@ Python version `3.8.18` or above is necessary to use this software. Run the foll
   ```
 
 ### Installation
- 
+
 1. Clone the repo
    ```sh
    git clone https://github.com/md-bd/SHADES.git

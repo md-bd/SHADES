@@ -69,7 +69,7 @@ class CNN_Train_TL_Stack():
         self.app_config = app_config
         self.batch_size = self.app_config['batch_size']
         self.epochs = self.app_config['epochs']
-        self.early_stop_threshold = self.app_config['early_stop_threshold']
+        # self.early_stop_threshold = self.app_config['early_stop_threshold']
         self.model_path = self.app_config['output_save_path']
         os.makedirs(self.model_path, exist_ok = True)
 

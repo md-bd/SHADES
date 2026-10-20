@@ -26,6 +26,8 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
+
+<!-- PROJECT LOGO -->
 <br />
 <div align="center">
 
@@ -34,11 +36,13 @@
   <p align="center">
     <i>SHADES</i>: Statistics of Haplotype frequencies And Differences for Evolutionary Signatures <br />
     <br />
+    <br />
     <a href="https://github.com/md-bd/SHADES/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
     <a href="https://github.com/md-bd/SHADES/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
+
 
 
 <!-- TABLE OF CONTENTS -->
@@ -74,8 +78,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-$\textit{SHADES}$ is a transfer learning framework to distinguish among neutrality, selective sweeps, balancing selection, and adaptive introgression.  
+$\textit{SHADES}$ is a transfer learning framework that learns and integrates complementary representations of genomic variation across multiple scales to distinguish among neutrality, selective sweeps, balancing selection, and adaptive introgression.
 
+
+<figure>
+  <img src="images/SM123_architecture_diagram.png" alt="High-level schematic of the SHADES models.">
+  <figcaption>High-level schematic of the SHADES models. Each stacked model integrates information across three genomic window sizes (11, 21, and 51 SNPs) by combining three independently trained base models of the same type.</figcaption>
+</figure>
 
 <!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
@@ -97,7 +106,7 @@ Python version `3.8.18` or above is necessary to use this software. Run the foll
   ```
 
 ### Installation
- 
+
 1. Clone the repo
    ```sh
    git clone https://github.com/md-bd/SHADES.git
@@ -112,7 +121,7 @@ Python version `3.8.18` or above is necessary to use this software. Run the foll
    ```
 
 
-**NOTE**: If you prefer using docker and want to install docker image, follow the instructions here: TODO<!-- TODO -->
+**NOTE**: If you prefer using docker and want to install docker image, follow the instructions here: Coming Soon<!-- TODO -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -245,7 +254,7 @@ Profile page: [https://md-bd.github.io/](https://md-bd.github.io/)
 [issues-shield]: https://img.shields.io/github/issues/md-bd/SHADES.svg?style=for-the-badge
 [issues-url]: https://github.com/md-bd/SHADES/issues
 [license-shield]: https://img.shields.io/github/license/md-bd/SHADES.svg?style=for-the-badge
-[license-url]: https://github.com/md-bd/SHADES/blob/master/LICENSE
+[license-url]: https://github.com/md-bd/SHADES/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/mohammad-khan-buet
 [product-screenshot]: images/screenshot.png

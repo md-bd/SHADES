@@ -2,7 +2,7 @@
 .DS_Store
 images/
 results/
-data/
+data/generated_data/
 models/
 
 

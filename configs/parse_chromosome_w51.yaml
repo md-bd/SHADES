@@ -1,0 +1,41 @@
+###
+### Author: Mohammad Khan
+### mkhan2024@fau.edu
+###
+
+# window 51 config
+# set the window size 11, 21, or 51
+window_size: 51
+# stride for window_size
+stride: 10
+
+# move to next chromosome positon with position_stride stride
+position_stride: 21
+
+# chromosome data is expected in :
+# data_root_path
+# |---- chromosome_1
+# |-------- chromosome_1.vcf
+# |---- chromosome_2
+# |-------- chromosome_2.vcf
+# |---- chromosome_3
+# |-------- chromosome_3.vcf
+# |......
+data_root_path: 'data/chromosomes/'
+chromosomes: ['chromosome_22']
+
+# save path for statistics for window_size
+output_save_path: 'data/generated_data/w51_chromosome/'
+
+# Task 3
+# max unique haplotypes
+max_u_haplos: 10
+
+
+# lowest_segsite
+# we get it from parsing simulation data
+# CEU 1e8 data info
+lowest_segsites_from_center: 
+  value: 1557
+  filename: 'data/ceu_samples/Sweeps/CEU_sweep_1.ms'
+

@@ -78,7 +78,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-$\textit{SHADES}$ is a transfer learning framework that learns and integrates complementary representations of genomic variation across multiple scales to distinguish among neutrality, selective sweeps, balancing selection, and adaptive introgression.
+*SHADES* is a transfer learning framework that learns and integrates complementary representations of genomic variation across multiple scales to distinguish among neutrality, selective sweeps, balancing selection, and adaptive introgression.
 
 
 <figure>
@@ -99,7 +99,7 @@ Built With
 
 ### Prerequisites
 
-Python version `3.8.18` or above is necessary to use this software. Run the following commands to ensure you have the required version.
+Python version `3.8.18` or above is necessary to use this software. We confirmed that the software runs on Python version `3.8.18` with all the other packages versions in `requirements.txt` file. If you are using Pyhton version higher than `3.8.18`, make sure to remove the versions in `requirements.txt` file. Run the following commands to ensure you have the required version:
 * check python version
   ```sh
   python --version
@@ -138,32 +138,64 @@ Both format data can be parsed and used for statistics generation using our scri
 #### ms file 
 
 ```Python
+# window 11
 # parse image 1 and 3:
 python src/parse_data.py -c configs/parse_w11.yaml 
 # parse image 2:
 python src/dist_from_freq.py -c configs/parse_w11.yaml
 ```
+You have to generate statistics for window 11, 21, and 51 separately for simulation data. 
+```Python
+# window 21
+# parse image 1 and 3:
+python src/parse_data.py -c configs/parse_w21.yaml 
+# parse image 2:
+python src/dist_from_freq.py -c configs/parse_w21.yaml
+```
+```Python
+# window 51
+# parse image 1 and 3:
+python src/parse_data.py -c configs/parse_w51.yaml 
+# parse image 2:
+python src/dist_from_freq.py -c configs/parse_w51.yaml
+```
 
 #### vcf file
 
 ```Python
+# window 11
 python src/parse_chromosome.py -c configs/parse_chromosome_w11.yaml
 ```
+You have to generate statistics for window 11, 21, and 51 separately for empirical data. 
+```Python
+# window 21
+python src/parse_chromosome.py -c configs/parse_chromosome_w21.yaml
+```
+```Python
+# window 51
+python src/parse_chromosome.py -c configs/parse_chromosome_w51.yaml
+```
 
-You have to generate statistics for window 11, 21, and 51 separately for simulation and empirical data. 
 
 ### Model Training and Testing
-$\textit{SHADES}$ model training process: 
+*SHADES* model training process: 
 1. Train M (M1 or M2) architecture model for window 11, 21, and 51 data. 
 2. Use trained M model for each window to train $\textit{SHADES}[M]$ model. We will keep the learned M model parameters frozen.
 
 #### $\textit{SHADES}[M_1]$
 M1 model training with window 11 example:
 ```Python
+# M1 window 11 model train
 python src/cnn_train.py -c configs/train_w11_m1.yaml
 ```
-Similarly we need to train w21 and w51 M1 model. When we have all windows model ready, we are ready to train the stacked model ($\textit{SHADES}[M_1]$).  
-
+Similarly we need to train w21 and w51 M1 model. 
+```Python
+# M1 window 21 model train
+python src/cnn_train.py -c configs/train_w21_m1.yaml
+# M1 window 51 model train
+python src/cnn_train.py -c configs/train_w51_m1.yaml
+```
+When we have all windows model ready, we are ready to train the stacked model ($\textit{SHADES}[M_1]$).  
 ```Python
 # SHADES[M1]
 python src/cnn_train.py -c configs/train_sm1.yaml
@@ -173,10 +205,18 @@ python src/cnn_train.py -c configs/train_sm1.yaml
 #### $\textit{SHADES}[M_2]$
 M2 model training with window 11 example:
 ```Python
+# M2 window 11 model train
 python src/cnn_train_inception_resnet_v2.py -c configs/train_w11_m2.yaml
 ```
-Similarly we need to train w21 and w51 M2 model. When we have all windows model ready, we are ready to train the stacked model ($\textit{SHADES}[M_2]$).  
+Similarly we need to train w21 and w51 M2 model. 
+```Python
+# M2 window 21 model train
+python src/cnn_train_inception_resnet_v2.py -c configs/train_w21_m2.yaml
+# M2 window 51 model train
+python src/cnn_train_inception_resnet_v2.py -c configs/train_w51_m2.yaml
+```
 
+When we have all windows model ready, we are ready to train the stacked model ($\textit{SHADES}[M_2]$).  
 ```Python
 # SHADES[M2]
 python src/cnn_train_inc_resv2_stacking.py -c configs/train_sm2.yaml

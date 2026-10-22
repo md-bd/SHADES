@@ -120,6 +120,12 @@ Python version `3.8.18` or above is necessary to use this software. We confirmed
    pip install -r requirements.txt
    ```
 
+4. Download, verify, and install the pretrained InceptionResNetV2 weights:
+
+   ```bash
+   python src/setup_weights.py
+   ```
+
 
 > For instructions on building and running SHADES with Docker, see the [Docker usage guide](docs/README_DOCKER.md).
 

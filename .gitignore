@@ -1,6 +1,6 @@
 # project folders
 .DS_Store
-images/
+
 results/
 data/generated_data/
 models/
